@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p><b>Задание:</b> У преподавателя в классе n студентов. Он хочет, чтобы в следующем семесте каждый студент мог поработать в паре со всеми остальными студентами в рамках научных проектов. помогите преподавателю подсчитать, сколько уникальных пар из n студентов он может собрать.
+<p>
+	<input type="text" id="count_stud" placeholder="Через запятую элементы массива..." size="30">
+</p>
+<p>
+	<input type="submit" value="Проверить" id="button">
+</p>
+<p class="message_result"></p>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#button').click(function(){
+			var count_stud = $('#count_stud').val();
+			generate(count_stud);
+		});
+
+		function generate(count_stud){
+			//число сочетаний без повторений
+			var result = factorial(count_stud)/(factorial(2)*(factorial(count_stud-2)));
+			alert(result);
+		}
+
+		function factorial(n) {
+  			return (n != 1) ? n * factorial(n - 1) : 1;
+		}
+	});
+</script>
+</body>
+</html>

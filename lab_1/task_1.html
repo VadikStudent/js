@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p><b>Задание:</b> Напишите функцию, которая будет проверять, является ли переданное ей число квадратным, то есть являющимся квадратом некоторого целого числа. Функция должна возвращать true или false. Пример: </p>
+isSquare(-1) // => false</br>
+isSquare( 3) // => false</br>
+isSquare( 4) // => true</br>
+isSquare(25) // => true</br>
+isSquare(26) // => false</br>
+<p>
+	<input type="number" id="num">
+</p>
+<p>
+	<input type="submit" value="Проверить" id="button">
+</p>
+<p class="message_result"></p>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#button').click(function(){
+			var num = $('#num').val();
+			isSquare(num);
+		});
+
+		function isSquare(num){
+			num = Math.sqrt(num);
+			var tmp = (num ^ 0) === num;
+			if(tmp){
+				$('.message_result').css('color','green');
+				$('.message_result').html("True");
+			}
+			else{
+				$('.message_result').css('color','red');
+				$('.message_result').html("False");
+			}
+			
+		}
+	});
+</script>
+</body>
+</html>

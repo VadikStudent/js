@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p><b>Задание:</b> Напишите рекурсивную функцию, которая будет переворачивать переданную ей строку задом наперед. Пример:</p>
+reverse("hello world"); #dlrow olleh</br>
+<p>
+	<input type="text" id="num" />
+</p>
+<p>
+	<input type="submit" value="Проверить" id="button">
+</p>
+<p class="message_result"></p>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#button').click(function(){
+			var str = $('#num').val();
+			$('.message_result').html(reverseStr(str));
+		});
+
+		function reverseStr(str){
+			return str.split("").reverse().join("");
+		}
+	});
+</script>
+</body>
+</html>

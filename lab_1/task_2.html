@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p><b>Задание:</b> Напишите функцию, которая находит количество положительных делителей переданного в нее целого числа. Пример: </p>
+getDivisorsCnt(1) // => 1);</br>
+getDivisorsCnt(10) // => 4);</br>
+getDivisorsCnt(11) // => 2);</br>
+getDivisorsCnt(54) // => 8);</br>
+<p>
+	<input type="number" id="num">
+</p>
+<p>
+	<input type="submit" value="Проверить" id="button">
+</p>
+<p class="message_result"></p>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#button').click(function(){
+			var num = $('#num').val();
+			getDivisorsCnt(num);
+		});
+
+		function getDivisorsCnt(num){
+			var count_del = 0;
+
+			for(var i = 1; i <= num; i++){
+				if(num % i == 0){
+					count_del++;
+				}
+			}
+			$('.message_result').html("Результат: "+count_del);
+		}
+	});
+</script>
+</body>
+</html>

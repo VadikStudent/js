@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p><b>Задание:</b> Напишите функцию, которая отфильтровывает строки из переданных в нее списков и возвращает список из чисел, содержавшихся в исходном списке. Пример: </p>
+filter_list([1,2,'a','b']) == [1,2]</br>
+filter_list([1,'a','b',0,15]) == [1,0,15]</br>
+filter_list([1,2,'aasf','1','123',123]) == [1,2,123]</br>
+<p>
+	<input type="text" id="elemnts_arr" placeholder="Через запятую элементы массива..." size="30">
+</p>
+<p>
+	<input type="submit" value="Проверить" id="button">
+</p>
+<p class="message_result"></p>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#button').click(function(){
+			var elemnts_arr = $('#elemnts_arr').val();
+			var data = elemnts_arr.split(',');
+			filter_list(data);
+		});
+
+		function filter_list(data){
+			var result_str = "[";	
+			for(var i = 0; i < data.length;i++){
+				var str = data[i].toString();
+				str.replace(/[^\d]/gi,"");
+				result_str+=str.replace(/[^\d]/gi,"")+",";
+			}	
+			result_str = result_str.substring(0, result_str.length - 1);
+			result_str+="]";
+			$('.message_result').html(result_str);
+		}
+	});
+</script>
+</body>
+</html>

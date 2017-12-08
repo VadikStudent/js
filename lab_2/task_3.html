@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p><b>Задание:</b> Вам дана строка. Напишите функцию, которая будет проходить по строке, склеивая первый символ слева с первым символом справа и добавит к этой паре "1", затем второй символ слева и второй символ справа и добавит к ним "2" и так далее. Если количество символов в строке нечетно, то центральный символ отбрасывается. Пример:</p>
+charConcat("abcdef")    #'af1be2cd3'</br>
+charConcat("abc!def")   #'af1be2cd3'</br>
+<p>
+	<input type="text" id="num" />
+</p>
+<p>
+	<input type="submit" value="Проверить" id="button">
+</p>
+<p class="message_result"></p>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#button').click(function(){
+			var str = $('#num').val();
+			var result_str = "";
+			var count = 1;
+			convertStr(str,result_str,count);
+		});
+
+		function convertStr(str,result_str,count){
+			if(str.length > 1){
+				result_str+=str.substring(0, 1)+str.substring(str.length-1, str.length)+count;
+				 count++;
+				 str = str.substring(1, str.length);
+				 str = str.substring(0, str.length-1);
+				 convertStr(str,result_str,count);
+			}
+			else{
+				$('.message_result').html(result_str);
+				return str;
+			}
+		}
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p><b>Задание:</b> Напишите функцию, которая будет определять является ли переданный ей почтовый код валидным почтовым кодом России. Валидный почтовый код может состоять только из 6 цифр. Помните, что он не может начинаться с 0, 5, 7, 8, 9</p>
+<p>
+	<input type="text" id="num" maxlength="6" />
+</p>
+<p>
+	<input type="submit" value="Проверить" id="button">
+</p>
+<p class="message_result"></p>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#button').click(function(){
+			var num = $('#num').val();
+			isIndex(num);
+		});
+
+		function isIndex(num){
+			num = num.toString();
+			copy_num = num.replace(/[0-9]/g, '');
+			if(num.length != 6){
+				$('.message_result').css('color','red');
+				$('.message_result').html('Неверный формат');
+			}
+			else{
+				if(copy_num.length == 0){
+					var no_first_element = [0,5,7,8,9];
+					if(find(no_first_element,Number(num[0])) == -1){
+						$('.message_result').css('color','green');
+						$('.message_result').html('Верный формат');
+					}
+					else{
+						$('.message_result').css('color','red');
+						$('.message_result').html('Неверный формат');
+					}
+				}
+				else{
+					$('.message_result').css('color','red');
+					$('.message_result').html('Неверный формат');
+				}
+			}
+
+		function find(array, value) {
+			  for (var i = 0; i < array.length; i++) {
+			    if (array[i] == value) return i;
+			  }
+			  return -1;
+			}
+		}
+	});
+</script>
+</body>
+</html>

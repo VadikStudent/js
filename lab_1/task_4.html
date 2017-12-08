@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p><b>Задание:</b> Реализуйте базовый калькулятор. Напишите функцию calculate(), которая принимает три аргумента. первый и второй аргументы - числа, третий - операция над ними. Если какой-то параметр неверен, функция должна возвращать null</p>
+<p>
+	<input type="number" id="num_1" placeholder="Первое число...">
+</p>
+<p>
+	<input type="text" id="operator" placeholder="Оператор...">
+</p>
+<p>
+	<input type="number" id="num_2" placeholder="Второе число....">
+</p>
+<p>
+	<input type="submit" value="Результат" id="button">
+</p>
+<p class="message_result"></p>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#button').click(function(){
+			var num_1 = $('#num_1').val();
+			var operator = $('#operator').val();
+			var num_2 = $('#num_2').val();
+			calculate(num_1,operator,num_2);
+		});
+
+		function calculate(num_1,operator,num_2){
+			$('.message_result').css('color','green');
+			switch(operator) {
+				case "+":
+				$('.message_result').html(Number(num_1)+Number(num_2));
+				break;
+
+				case "-":
+				$('.message_result').html(Number(num_1)-Number(num_2));
+				break;
+
+				case "*":
+				$('.message_result').html(Number(num_1)*Number(num_2));
+				break;
+
+				case "/":
+				$('.message_result').html(Number(num_1)/Number(num_2));
+				break;
+				default:
+				$('.message_result').css('color','red');
+				$('.message_result').html("Введены неверные данные!");
+			}
+		}
+		
+
+	});
+</script>
+</body>
+</html>

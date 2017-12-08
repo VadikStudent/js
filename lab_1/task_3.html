@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p><b>Задание:</b> Напишите функцию, которая будет возвращать переданное в нее число в перевернутом виде. Пример: </p>
+descendingOrder(0) // => 0</br>
+descendingOrder(145263) // => 654321</br>
+descendingOrder(1254859789) // => 9875543221</br>
+<p>
+	<input type="number" id="num">
+</p>
+<p>
+	<input type="submit" value="Проверить" id="button">
+</p>
+<p class="message_result"></p>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#button').click(function(){
+			var num = $('#num').val();
+			descendingOrder(num);
+		});
+
+		function descendingOrder(num){
+			var result = Number(num.toString().split('').reverse().join(''));
+			$('.message_result').html("Результат: "+result);
+		}
+	});
+</script>
+</body>
+</html>
